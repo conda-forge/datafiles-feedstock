@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: datafiles
-  version: "2.4"
+  version: "2.5"
   python_min: 3.10
 
 package:
@@ -11,7 +11,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/datafiles-${{ version }}.tar.gz
-  sha256: 9a5e87c7bd01481b4efc0f9b53cd2a3277aad60a22dc1a3717df97ad4ead780b
+  sha256: 432498336b57aaa9e3427f3c2cf0c558b980a01d825661da9df61076b3b84f8e
 
 build:
   number: 0
