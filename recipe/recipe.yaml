@@ -3,7 +3,7 @@ schema_version: 1
 context:
   name: datafiles
   version: "2.5"
-  python_min: 3.10
+  build_number: 1
 
 package:
   name: ${{ name|lower }}
@@ -14,7 +14,7 @@ source:
   sha256: 432498336b57aaa9e3427f3c2cf0c558b980a01d825661da9df61076b3b84f8e
 
 build:
-  number: 0
+  number: ${{ build_number }}
   noarch: python
   script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
@@ -24,12 +24,12 @@ requirements:
     - poetry-core
     - pip
   run:
-    - python >=${{ python_min }}.0,<4.0.0
+    - python >=${{ python_min }}.0
     - json-five >=1.1.2,<2.0.0
-    - ruamel.yaml >=0.18.10,<0.19.0
-    - tomlkit >=0.10.1,<0.11.0
+    - ruamel.yaml >=0.18.10,<0.20.0
+    - tomlkit >=0.10.1,<0.15.0
     - parse >=1.12.0,<2.0.0
-    - cached_property >=1.5.0,<2.0.0
+    - cached_property >=1.5.0,<3.0.0
     - classproperties >=0.2.0,<0.3.0
     - minilog >=2.3.0,<3.0.0
 
@@ -38,7 +38,9 @@ tests:
       imports:
         - datafiles
       pip_check: true
-      python_version: ${{ python_min }}.*
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
 
 about:
   summary: File-based ORM for dataclasses.
