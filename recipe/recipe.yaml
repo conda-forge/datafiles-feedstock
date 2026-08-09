@@ -3,6 +3,7 @@ schema_version: 1
 context:
   name: datafiles
   version: "2.5"
+  build_number: 1
   python_min: 3.10
 
 package:
@@ -14,7 +15,7 @@ source:
   sha256: 432498336b57aaa9e3427f3c2cf0c558b980a01d825661da9df61076b3b84f8e
 
 build:
-  number: 0
+  number: ${{ build_number }}
   noarch: python
   script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
